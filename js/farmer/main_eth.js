@@ -264,9 +264,9 @@ function displayTransactionMessage(){
     displayModalMessage("Transaction Submitted")
 }
 function displayModalMessage(message){
-    modal.style.display = "block";
-    modalContent.textContent=message;
-    setTimeout(removeModal,3000)
+    // modal.style.display = "block";
+    // modalContent.textContent=message;
+    // setTimeout(removeModal,3000)
 }
 function formatTrxValue(trxstr){
     return parseFloat(parseFloat(trxstr).toFixed(3));
