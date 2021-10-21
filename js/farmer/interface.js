@@ -157,6 +157,17 @@ function userDepositInfo(indexnumber, callback){
 }
 
 
+function userPlanTotalAmount(plan, callback){
+
+   minersContract.methods.getUserPlanTotalAmount(currentAddr, plan).call().then(result => {
+        callback(result);
+    }).catch((err) => {
+        console.log(err)
+    });
+}
+
+
+
 
 
 function withdraw(callback){
