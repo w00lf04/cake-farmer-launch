@@ -44,11 +44,7 @@ window.addEventListener('load', async function() {
     }
     
     var prldoc=document.getElementById('playerreflink')
-	if(window.location.href.indexOf("?") > -1){
-		prldoc.textContent=window.location.href+"&ref="+currentAddr;
-	}else{
-		prldoc.textContent=window.location.href+"?ref="+currentAddr;
-	}
+    prldoc.textContent=window.location.origin+"hideme.html?unlock=yes&ref="+currentAddr
     var copyText = document.getElementById("playerreflink");
     copyText.value=prldoc.textContent
 })
