@@ -44,7 +44,11 @@ window.addEventListener('load', async function() {
     }
     
     var prldoc=document.getElementById('playerreflink')
-    prldoc.textContent=window.location.href+"?ref="+currentAddr
+	if(window.location.href.indexOf("?") > -1){
+		prldoc.textContent=window.location.href+"&ref="+currentAddr;
+	}else{
+		prldoc.textContent=window.location.href+"?ref="+currentAddr;
+	}
     var copyText = document.getElementById("playerreflink");
     copyText.value=prldoc.textContent
 })
