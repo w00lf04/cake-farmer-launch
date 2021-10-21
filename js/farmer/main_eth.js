@@ -44,7 +44,7 @@ window.addEventListener('load', async function() {
     }
     
     var prldoc=document.getElementById('playerreflink')
-    prldoc.textContent=window.location.origin+"?ref="+currentAddr
+    prldoc.textContent=window.location.href+"?ref="+currentAddr
     var copyText = document.getElementById("playerreflink");
     copyText.value=prldoc.textContent
 })

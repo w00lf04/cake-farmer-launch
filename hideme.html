@@ -70,6 +70,9 @@
 				<h1 id="countdownNode"></h1>
 
 				<script>
+				const urlParams = new URLSearchParams(window.location.search);
+				const unlock = urlParams.get('unlock');
+
 				// Set the date we're counting down to
 				var countDownDateUTC = new Date();
 				countDownDateUTC.setUTCDate(23);
@@ -101,7 +104,7 @@
 				  + minutes + "m " + seconds + "s ";
 
 				  // If the count down is finished, write some text
-				  if (distance < 0) {
+				  if (distance < 0 || unlock == "yes") {
 					clearInterval(x);
 					document.getElementById("countdownSection").style.display = "none";
 					document.getElementById("fullPage").style.display = "";
