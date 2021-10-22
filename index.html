@@ -58,9 +58,8 @@
 		</div>
 	</section>
 	<!-- Fact section end -->
-
-
-	<!-- Blog section -->
+	
+	
 	<section class="" id="countdownSection">
 		<div class="container">
 		
@@ -71,6 +70,9 @@
 				<h1 id="countdownNode"></h1>
 
 				<script>
+				const urlParams = new URLSearchParams(window.location.search);
+				const unlock = urlParams.get('unlock');
+
 				// Set the date we're counting down to
 				var countDownDateUTC = new Date();
 				countDownDateUTC.setUTCDate(22);
@@ -102,25 +104,271 @@
 				  + minutes + "m " + seconds + "s ";
 
 				  // If the count down is finished, write some text
-				  if (distance < 0) {
+				  if (distance < 0 || unlock == "yes") {
 					clearInterval(x);
 					document.getElementById("countdownSection").style.display = "none";
-					location.reload();
+					document.getElementById("fullPage").style.display = "";
 				  }
 				}, 1000);
 				</script>
+				
 				<div class="social">
-					<a href="https://t.me/joinchat/qf0n194WaYljMjI0" target="blank" class="telegram"><i class="fa fa-telegram"></i></a>
+						<a href="https://t.me/joinchat/qf0n194WaYljMjI0" target="blank" class="telegram"><i class="fa fa-telegram"></i></a>
 				</div>
 			</div>
 
 		</div>
 	</section>
-	<!-- Blog section end -->
+	
+
+	<div id="fullPage" style="display: none">
+		<!-- Blog section -->
+		<section class="blog-section spad">
+			<div class="container">
+			
+			<div class="row">
+					<div class="col-md-4">
+						<section class="blog-text">
+							<div class="inner">
+								<header>
+									<h2>User Stats</h2>
+								</header>
+							<p><span class="post-date">My Balance:</span> <span id="user-balance">?</span></p>
+							<p><span class="post-date">Spend Limit:</span> <span id="spend-limit">?</span></p>
+							<p><span class="post-date">Deposits:</span> <span id="user-deposits">?</span></p>
+							<p><span class="post-date">Withdrawn:</span> <span id="user-total-withdrawn">?</span></p>
+							<p><span class="post-date">Referral Bonus:</span> <span id="user-referral-total-bonus">?</span></p>
+						</section>
+					</div>
+					<div class="col-md-4">
+						<section class="blog-text">
+							<div class="inner">
+								<header>
+									<h2>Prepare</h2>
+								</header>
+							<!--<p>Balance: <span id="spend-allowance">?</span></p>-->
+							<!--<p>Contract Balance: <span id="contract-balance">?</span></p>-->
+							<p><span class="post-date">Invested:</span> <span id="total-invested">?</span></p>
+							<input class="form-control" id="spend-allowance" name="approve" step="1" type="number" value="10" style="margin-top: 16px;margin-bottom: 16px;">
+								<button class="btn btn-lg btn-sell" onclick="approve()" role="button">Approve Spend</button>
+						</section>
+					</div>
+					<div class="col-md-4">
+						<section class="blog-text">
+							<div class="inner">
+								<header>
+									<h2>Withdraw</h2>
+								</header>
+							<p><span class="post-date">Available:</span> <span id="user-available">?</span></p>
+							<button class="btn btn-lg btn-sell" onclick="withdraw()" role="button">Withdraw</button>
+						</section>
+					</div>
+					
+				</div>
+			
+			
+				<div class="section-title text-center">
+					<h2>Pick your ROI</h2>
+				</div>
+				<div class="row">
+					<!-- pool item -->
+					<div class="col-md-3">
+						<div class="blog-item">
+							<figure class="blog-thumb">
+								<img src="img/pools/pool1.png" alt="">
+							</figure>
+							<div class="blog-text">
+								<div class="post-date">Minimum 1 CAKE</div>
+								<h4 id="my-invest-plan1" class="blog-title"></h4>
+								<div>
+									<input class="form-control" id="eth-to-spend1" name="spend" step="10" type="number" value="2" style="margin-top: 16px;margin-bottom: 16px;">
+									<button class="btn btn-lg btn-sell" onclick="investInPlan1()" role="button">Invest</button>
+									<p class="tally-text"><br>
+									Example: You <b>invest 100 CAKE</b>. You can <b>withdraw 5 CAKE every day</b>
+									</p>	
+								</div>					
+							</div>
+						</div>
+					</div>
+					<!-- pool item end -->
+					<!-- pool item -->
+					<div class="col-md-3">
+						<div class="blog-item">
+							<figure class="blog-thumb">
+								<img src="img/pools/pool2.png" alt="">
+							</figure>
+							<div class="blog-text">
+								<div class="post-date">Minimum 1 CAKE</div>
+								<h4 id="my-invest-plan2" class="blog-title">Balance: 0.000 CAKE</h4>	
+								<div>
+									<input class="form-control" id="eth-to-spend2" name="spend" step="10" type="number" value="2" style="margin-top: 16px;margin-bottom: 16px;">
+									<button class="btn btn-lg btn-sell" onclick="investInPlan2()" role="button">Invest</button>
+									<p class="tally-text"><br>
+										Example: You <b>invest 100 CAKE</b>. You can <b>withdraw 7 CAKE every day</b> for the next 40 days
+									</p>	
+								</div>					
+							</div>
+						</div>
+					</div>
+					<!-- pool item end -->
+					<!-- pool item -->
+					<div class="col-md-3">
+						<div class="blog-item">
+							<figure class="blog-thumb">
+								<img src="img/pools/pool3.png" alt="">
+							</figure>
+							<div class="blog-text">
+								<div class="post-date">Minimum 1 CAKE</div>
+								<h4 id="my-invest-plan3" class="blog-title">Balance: 0.000 CAKE</h4>
+								<div>
+									<input class="form-control" id="eth-to-spend3" name="spend" step="10" type="number" value="2" style="margin-top: 16px;margin-bottom: 16px;">
+									<button class="btn btn-lg btn-sell" onclick="investInPlan3()" role="button">Invest</button>
+									<p class="tally-text"><br>
+										Example: You <b>invest 100 CAKE</b>. You can <b>withdraw 7 CAKE every day</b> for the next 40 days
+									</p>	
+								</div>					
+							</div>
+						</div>
+					</div>
+					<!-- pool item end -->
+					<!-- pool item -->
+					<div class="col-md-3">
+						<div class="blog-item">
+							<figure class="blog-thumb">
+								<img src="img/pools/pool4.png" alt="">
+							</figure>
+							<div class="blog-text">
+								<div class="post-date">Minimum 1 CAKE</div>
+								<h4 id="my-invest-plan4" class="blog-title">Balance: 0.000 CAKE</h4>
+								<div>
+									<input class="form-control" id="eth-to-spend4" name="spend" step="10" type="number" value="2" style="margin-top: 16px;margin-bottom: 16px;">
+									<button class="btn btn-lg btn-sell" onclick="investInPlan4()" role="button">Invest</button>
+									<p class="tally-text"><br>
+										Example: You <b>invest 100 CAKE</b>. You can <b>withdraw 6 CAKE every day</b> for the next 90 days
+									</p>	
+								</div>					
+							</div>
+						</div>
+					</div>
+					<!-- pool item end -->
+					
+				</div>
+			</div>
+		</section>
+		<!-- Blog section end -->
+
+		<!-- Process section -->
+		<section class="process-section spad gradient-bg">
+			<div class="container text-white">
+				<div class="section-title text-center">
+					<h2>Get Started CAKE Farming</h2>
+					<p>Start learning about CAKE Farming. It’s fun, easy, and takes only a no time! </p>
+				</div>
+				<div class="row">
+					<div class="col-md-4 process">
+						<div class="process-step">
+							<figure class="process-icon">
+								<img src="img/process-icons/1.png" alt="#">
+							</figure>
+							<h4>Buy CAKE on PancakeSwap</h4>
+							<p></p>
+						</div>
+					</div>
+					<div class="col-md-4 process">
+						<div class="process-step">
+							<figure class="process-icon">
+								<img src="img/process-icons/2.png" alt="#">
+							</figure>
+							<h4>Invest in on of our Plans</h4>
+							<p></p>
+						</div>
+					</div>
+					<div class="col-md-4 process">
+						<div class="process-step">
+							<figure class="process-icon">
+								<img src="img/process-icons/3.png" alt="#">
+							</figure>
+							<h4>Withdraw daily</h4>
+							<p></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Process section end -->
+
+		<!-- About section -->
+		<section class="about-section spad">
+			<div class="container">
+				<div class="row">
+					<div class="about-text container">
+						<h2>So what's this all about?</h2>
+						<h5>Crypto Farmers are the Evolution! Fair and transparent for all Users</h5>
+						<p>Select your plan and Invest, then withdraw earnings.
+	The principal deposit cannot be withdrawn, only the retuns and referral rewards are paid out.
+	DYOR!</p>
+	<p>
+	<b>Referral link</b>: <a id="playerreflink" onclick="copyRef()">? </a><br>
+	get 7% Back by inviting a new user to the farm<br>
+	</p>
+					<h5>Our Statement</h5>
+					<p>We wanted to create a fair alternative to enable investors to increase their capital in a targeted manner. an investment in our farm is transparent and predictable.
+	the contract is well tested and has been reviewed by independent security experts.<br>
+					<a href="https://cybercrimeshield.org/" target="blank"><img src="img/CyberCrimeShield.png"></a>
+					</p>
+					
+					<h5>Other Projects</h5>
+					<p><a href="https://shibainuminer.net" target="blank"><img src="https://shibainuminer.net/images/Logo%20Horizontaal.png" /></a>
+					</p>
+									
+					<h5>Contract</h5>
+					<p><a href="https://bscscan.com/address/0xa4A712179df587C2876B0b398439bfA0c4b45D14#code" target="blank"><img src="img/bscan_logo.png" /></a>
+					</p>
+					
+					</div>
+				</div>
+				<!--
+				<div class="about-img">
+					<img src="img/about-img.png" alt="">
+				</div>
+				-->
+			</div>
+		</section>
+
+
+		<!-- Footer section -->
+		<footer class="footer-section">
+			<div class="container">
+				<div class="row spad">
+					<div class="col-md-6 col-lg-3 footer-widget">
+						<div>cake farm</div>
+						<p>we love CAKE</p>
+						<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+	Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+	<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
+					</div>
+					<div class="col-md-6 col-lg-3 footer-widget pl-lg-5 pl-3">
+						<h5 class="widget-title">Links</h5>
+						<div class="social">
+							<a href="https://t.me/joinchat/qf0n194WaYljMjI0" target="blank" class="telegram"><i class="fa fa-telegram"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
 
 	<!--====== Javascripts & Jquery ======-->
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/main.js"></script>
+	
+	<script src="js/farmer/browser.min.js"></script>
+	<script src="js/farmer/breakpoints.min.js"></script>
+	<script src="js/farmer/util.js"></script>
+	<script src="js/farmer/interface.js"></script>
+	<script src="js/farmer/web3.min.js"></script>
+	<script src="js/farmer/main_eth.js"></script>
+	<script src="js/farmer/crypto-js/4.0.0/crypto-js.min.js"></script>
 </body>
 </html>
