@@ -220,7 +220,7 @@ function withdraw(callback){
 function invest(ref, plan, trx, callback){
 
 	if(trx < 1 ){
-		alert("You have spend at least 1 CAKE");
+		alert("You have to spend at least 1 CAKE");
 		return;
 	}
 	
