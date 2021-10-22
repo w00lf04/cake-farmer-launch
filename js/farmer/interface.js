@@ -176,17 +176,18 @@ function userDepositsCount(callback){
 }
 
 function DrawPlanAmount(plan, targetNode){
-	window.planAmounts[plan] = 0;
+    window.planAmounts[plan] = 0;
     userDepositsCount(function(depositCount){
         for(var i = 0; i < depositCount; i++){
             userDepositInfo(i, function(deposit){
                 
                 if(deposit.plan == plan){
-					window.planAmounts[plan] = window.planAmounts[plan] + web3.utils.fromWei(deposit.amount);
-					
-					var amount = window.planAmounts[plan].toFixed(3).toLocaleString();
-					targetNode.innerHTML = amount + " CAKE";
-					
+                    window.planAmounts[plan] = new Number(window.planAmounts[plan]) + new Number(web3.utils.fromWei(deposit.amount));
+                    
+                    var amount = new Number(window.planAmounts[plan]).toFixed(3);
+                    amount = amount.toLocaleString();
+                    targetNode.innerHTML = amount + " CAKE";
+                    
                     //console.log(new Date(deposit.start*1000), new Date(deposit.finish*1000), web3.utils.fromWei(deposit.amount), deposit.percent );
                 }
             });

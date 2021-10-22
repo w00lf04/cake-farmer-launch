@@ -165,43 +165,47 @@ function refreshData(){
 	
 	var myInvestPlan1Elem = document.getElementById('my-invest-plan1');
 	var plan = 1;
-	userPlanTotalAmount(plan-1, function(result){
+	/*userPlanTotalAmount(plan-1, function(result){
 		if(result){
 			var amount = web3.utils.fromWei(result);
 			rawStr = Number(amount).toFixed(3);
 			myInvestPlan1Elem.textContent = "Balance: " + rawStr.toLocaleString() + " CAKE";
 		}
-    });
+    });*/
+	DrawPlanAmount(plan-1, myInvestPlan1Elem);
 	
 	var myInvestPlan2Elem = document.getElementById('my-invest-plan2');
 	var plan = 2;
-	userPlanTotalAmount(plan-1, function(result){
+	/*userPlanTotalAmount(plan-1, function(result){
 		if(result){
 			var amount = web3.utils.fromWei(result);
 			rawStr = Number(amount).toFixed(3);
 			myInvestPlan2Elem.textContent = "Balance: " + rawStr.toLocaleString() + " CAKE";
 		}
-    });	
+    });	*/
+	DrawPlanAmount(plan-1, myInvestPlan2Elem);
 	
 	var myInvestPlan3Elem = document.getElementById('my-invest-plan3');
 	var plan = 3;
-	userPlanTotalAmount(plan-1, function(result){
+	/*userPlanTotalAmount(plan-1, function(result){
 		if(result){
 			var amount = web3.utils.fromWei(result);
 			rawStr = Number(amount).toFixed(3);
 			myInvestPlan3Elem.textContent = "Balance: " + rawStr.toLocaleString() + " CAKE";
 		}
-    });
+    });*/
+	DrawPlanAmount(plan-1, myInvestPlan3Elem);
 	
 	var myInvestPlan4Elem = document.getElementById('my-invest-plan4');
 	var plan = 4;
-	userPlanTotalAmount(plan-1, function(result){
+	/*userPlanTotalAmount(plan-1, function(result){
 		if(result){
 			var amount = web3.utils.fromWei(result);
 			rawStr = Number(amount).toFixed(3);
 			myInvestPlan4Elem.textContent = "Balance: " + rawStr.toLocaleString() + " CAKE";
 		}
-    });
+    });*/
+	DrawPlanAmount(plan-1, myInvestPlan4Elem);
 
 }
 
