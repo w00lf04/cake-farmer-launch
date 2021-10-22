@@ -166,6 +166,25 @@ function userPlanTotalAmount(plan, callback){
     });
 }
 
+function userDepositsCount(callback){
+
+   minersContract.methods.getUserDepositsCount(currentAddr).call().then(result => {
+        callback(result);
+    }).catch((err) => {
+        console.log(err)
+    });
+}
+
+function userDepositIinfo(index, callback){
+
+   minersContract.methods.getUserDepositIinfo(currentAddr, index).call().then(result => {
+        callback(result);
+    }).catch((err) => {
+        console.log(err)
+    });
+}
+
+
 
 
 
