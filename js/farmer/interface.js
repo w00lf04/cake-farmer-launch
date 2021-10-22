@@ -175,15 +175,25 @@ function userDepositsCount(callback){
     });
 }
 
-function userDepositIinfo(index, callback){
-
-   minersContract.methods.getUserDepositIinfo(currentAddr, index).call().then(result => {
-        callback(result);
-    }).catch((err) => {
-        console.log(err)
-    });
+function DrawPlanAmount(plan, targetNode){
+	window.planAmounts[plan] = 0;
+    userDepositsCount(function(depositCount){
+        for(var i = 0; i < depositCount; i++){
+            userDepositInfo(i, function(deposit){
+                
+                if(deposit.plan == plan){
+					window.planAmounts[plan] = window.planAmounts[plan] + web3.utils.fromWei(deposit.amount);
+					
+					var amount = window.planAmounts[plan].toFixed(3).toLocaleString();
+					targetNode.innerHTML = amount + " CAKE";
+					
+                    //console.log(new Date(deposit.start*1000), new Date(deposit.finish*1000), web3.utils.fromWei(deposit.amount), deposit.percent );
+                }
+            });
+        }
+    })
 }
-
+//DrawDeposits(0);
 
 
 
