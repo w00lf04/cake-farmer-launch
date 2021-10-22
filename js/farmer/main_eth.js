@@ -155,7 +155,7 @@ function refreshData(){
     spendLimit(function(result){
         rawStr = Number(result).toFixed(3);
         spentLimitElem.textContent = rawStr.toLocaleString() + " CAKE";
-		spend = rawStr;
+		spend = Number(result);
     });
 
     var userBalanceElem = document.getElementById('user-balance');
