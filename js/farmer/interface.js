@@ -189,10 +189,10 @@ function withdraw(callback){
 
 function invest(ref, plan, trx, callback){
 
-	/*if(trx < 1 ){
+	if(trx < 1 ){
 		alert("You have spend at least 1 CAKE");
 		return;
-	}*/
+	}
 	
 	if(+trx > +usrBal) {
 		alert("You don't have " + trx + " CAKE in your wallet");
