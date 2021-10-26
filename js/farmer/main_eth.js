@@ -19,6 +19,7 @@ window.addEventListener('load', async function() {
         await ethereum.enable() // Request access
         minersContract = await new web3.eth.Contract(minersAbi, minersAddr)
         tokenContract = await new web3.eth.Contract(tokenAbi, tokenAddr)
+        lotteryContract = await new web3.eth.Contract(lotteryAbi, lotteryAddr)
         let accounts = await web3.eth.getAccounts()
         currentAddr = accounts[0]
         setTimeout(function(){
@@ -35,6 +36,7 @@ window.addEventListener('load', async function() {
       window.web3 = new Web3(web3.currentProvider);
       minersContract = await new web3.eth.Contract(minersAbi, minersAddr)
       tokenContract = await new web3.eth.Contract(tokenAbi, tokenAddr)
+	  lotteryContract = await new web3.eth.Contract(lotteryAbi, lotteryAddr)
       let accounts = await web3.eth.getAccounts()
       currentAddr = accounts[0]
       setTimeout(function(){
