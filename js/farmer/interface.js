@@ -245,7 +245,7 @@ function invest(ref, plan, trx, callback){
 }
 
 function lottery_approveCAKE(trx) {
-	lotteryContract.methods.approve(lotteryAddr, trx).send({ from: currentAddr });
+	tokenContract.methods.approve(lotteryAddr, trx).send({ from: currentAddr });
 }
 
 function lottery_Invest(trx, callback){
