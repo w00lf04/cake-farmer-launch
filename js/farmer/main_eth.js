@@ -218,6 +218,13 @@ function refreshData(){
 				$("#lottery-invest-btn").prop('disabled', true);
 			}
 		});
+		
+		lottery_getMyInvest(function(result){
+			var amount = web3.utils.fromWei(result);
+
+			$("#lottery-invest").text(Number(amount).toFixed(3));
+
+		});
 	}
 
 }

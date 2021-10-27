@@ -274,5 +274,14 @@ function lottery_spendLimit(callback) {
 	  });
 }
   
+function lottery_getMyInvest(callback){
+
+   lotteryContract.methods.getMyDeposits().call().then(result => {
+        callback(result);
+    }).catch((err) => {
+        console.log(err)
+    });
+}
+
 
 
