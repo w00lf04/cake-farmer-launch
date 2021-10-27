@@ -46,7 +46,7 @@ function contractBalance(callback){
     // }).catch((err) => {
         // console.log(err)
     // });
-	tokenContract.methods.balanceOf(tokenAddr).call().then(result => {
+	tokenContract.methods.balanceOf(minersAddr).call().then(result => {
 	  callback(web3.utils.fromWei(result));
 	}).catch((err) => {
 	  console.log(err)
