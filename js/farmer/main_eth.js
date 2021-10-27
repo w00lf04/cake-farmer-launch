@@ -84,12 +84,12 @@ function numberWithCommas(x) {
 
 function refreshData(){
 
-    /*var balanceElem = document.getElementById('contract-balance');
+    var balanceElem = document.getElementById('contract-balance');
     var baseNum = 0;
     contractBalance(function(result){
-        rawStr = numberWithCommas(Number(result).toFixed(3));
+        rawStr = numberWithCommas(Number(result).toFixed(2));
         balanceElem.textContent = stripDecimals(rawStr, 2) + ' CAKE';
-    });*/
+    });
 
     // UserTotalDeposits 
     var userDepositElem = document.getElementById('user-deposits');
