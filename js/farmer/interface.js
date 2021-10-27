@@ -266,4 +266,13 @@ function lottery_Invest(trx, callback){
 	
 }
 
+function lottery_spendLimit(callback) {
+	tokenContract.methods.allowance(currentAddr,lotteryAddr).call().then(result => {
+		  callback(web3.utils.fromWei(result));
+	  }).catch((err) => {
+		  console.log(err)
+	  });
+}
+  
+
 

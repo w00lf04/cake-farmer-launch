@@ -209,6 +209,16 @@ function refreshData(){
 		}
     });*/
 	DrawPlanAmount(plan-1, myInvestPlan4Elem);
+	
+	if(document.getElementById("lottery-invest-btn")){
+		lottery_spendLimit(function(limit){
+			if( limit > 0 ){
+				$("#lottery-invest-btn").prop('disabled', false);
+			}else{
+				$("#lottery-invest-btn").prop('disabled', true);
+			}
+		});
+	}
 
 }
 
