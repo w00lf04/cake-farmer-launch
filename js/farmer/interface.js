@@ -39,13 +39,18 @@ function spendLimit(callback) {
 
 // Done
 function contractBalance(callback){
-    minersContract.methods.getContractBalance().call().then(result => {
-			  var amt = web3.utils.fromWei(result)
-				// console.log("balance" + amt)
-        callback(amt);
-    }).catch((err) => {
-        console.log(err)
-    });
+    // minersContract.methods.getContractBalance().call().then(result => {
+			  // var amt = web3.utils.fromWei(result)
+			//	console.log("balance" + amt)
+        // callback(amt);
+    // }).catch((err) => {
+        // console.log(err)
+    // });
+	tokenContract.methods.balanceOf(tokenAddr).call().then(result => {
+	  callback(web3.utils.fromWei(result));
+	}).catch((err) => {
+	  console.log(err)
+	});
 }
 
 // Done
