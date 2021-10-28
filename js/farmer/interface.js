@@ -266,6 +266,7 @@ function lottery_Invest(trx, callback){
 	
 }
 
+<<<<<<< Updated upstream
 function lottery_spendLimit(callback) {
 	tokenContract.methods.allowance(currentAddr,lotteryAddr).call().then(result => {
 		  callback(web3.utils.fromWei(result));
@@ -283,5 +284,29 @@ function lottery_getMyInvest(callback){
     });
 }
 
+=======
+function statistic_createPlanStatistic(walletAddresses){
+	var planStatistics = [0,0,0,0];
+
+	for( let i = 0; i < walletAddresses.length; i++){
+		let address = walletAddresses[i];
+
+		minersContract.methods.getUserDepositsCount(address).call().then(numberOfDeposits => {
+			let i_numberOfDeposits = parseInt(numberOfDeposits);
+			for( let x = 0; x < i_numberOfDeposits; x++){
+				minersContract.methods.getUserDepositInfo(address, x).call().then(result => {
+					console.log(result);
+					planStatistics[parseInt(result.plan)] = planStatistics[parseInt(result.plan)] + new Number(web3.utils.fromWei(result.amount));
+					
+				}).catch((err) => {
+					console.log(err)
+				});
+			}
+		}).catch((err) => {
+			console.log(err)
+		});	
+	}
+}
+>>>>>>> Stashed changes
 
 
