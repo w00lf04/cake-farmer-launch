@@ -266,7 +266,6 @@ function lottery_Invest(trx, callback){
 	
 }
 
-<<<<<<< Updated upstream
 function lottery_spendLimit(callback) {
 	tokenContract.methods.allowance(currentAddr,lotteryAddr).call().then(result => {
 		  callback(web3.utils.fromWei(result));
@@ -284,7 +283,7 @@ function lottery_getMyInvest(callback){
     });
 }
 
-=======
+
 function statistic_createPlanStatistic(walletAddresses){
 	var planStatistics = [0,0,0,0];
 
@@ -307,6 +306,6 @@ function statistic_createPlanStatistic(walletAddresses){
 		});	
 	}
 }
->>>>>>> Stashed changes
+
 
 
