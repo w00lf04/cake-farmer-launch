@@ -222,7 +222,15 @@ function refreshData(){
 		lottery_getMyInvest(function(result){
 			var amount = web3.utils.fromWei(result);
 
-			$("#lottery-invest").text(Number(amount).toFixed(3));
+			var tickets = parseInt(amount);
+			$("#lottery-invest").text(Number(amount).toFixed(3) + " (" + tickets + " tickets)");
+
+		});
+		
+		lottery_getLotteryWalletBalance(function(result){
+			var amount = web3.utils.fromWei(result);
+
+			$("#lottery-invest-total").text(Number(amount).toFixed(3));
 
 		});
 	}
