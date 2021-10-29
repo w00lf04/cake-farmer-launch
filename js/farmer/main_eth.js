@@ -216,28 +216,30 @@ function refreshData(){
 			lotterySpendLimit = limit;
 			if( limit > 0 ){
 				$("#lottery-invest-btn").prop('disabled', false);
+				
+				lottery_getMyInvest(function(result){			
+					
+					var amount = web3.utils.fromWei(result);
+
+					var tickets = parseInt(amount);
+					$("#lottery-invest").text(Number(amount).toFixed(3) + " (" + tickets + " tickets)");
+					var currentSpendAmount = new Number(document.getElementById('lottery-spend-cake').value);
+					
+					if( new Number(amount) + currentSpendAmount <= 3 ){
+						$("#lottery-invest-btn").prop('disabled', false);
+					}else{
+						$("#lottery-invest-btn").prop('disabled', true);
+					}
+				});
+				
 			}else{
 				$("#lottery-invest-btn").prop('disabled', true);
 			}
 		});
 		
-		if(lotterySpendLimit > 0 ){
-			lottery_getMyInvest(function(result){			
-				
-				var amount = web3.utils.fromWei(result);
+		// if(lotterySpendLimit > 0 ){
 
-				var tickets = parseInt(amount);
-				$("#lottery-invest").text(Number(amount).toFixed(3) + " (" + tickets + " tickets)");
-				var currentSpendAmount = new Number(document.getElementById('lottery-spend-cake').value);
-				
-				if( new Number(amount) + currentSpendAmount <= 3 ){
-					$("#lottery-invest-btn").prop('disabled', false);
-				}else{
-					$("#lottery-invest-btn").prop('disabled', true);
-				}
-
-			});
-		}
+		// }
 		
 		lottery_getLotteryWalletBalance(function(result){
 			var amount = web3.utils.fromWei(result);
