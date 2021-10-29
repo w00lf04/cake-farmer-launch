@@ -224,6 +224,12 @@ function refreshData(){
 
 			var tickets = parseInt(amount);
 			$("#lottery-invest").text(Number(amount).toFixed(3) + " (" + tickets + " tickets)");
+			
+			if( amount <= 3 ){
+				$("#lottery-invest-btn").prop('disabled', false);
+			}else{
+				$("#lottery-invest-btn").prop('disabled', true);
+			}
 
 		});
 		
