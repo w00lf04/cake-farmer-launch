@@ -230,7 +230,7 @@ function refreshData(){
 				$("#lottery-invest").text(Number(amount).toFixed(3) + " (" + tickets + " tickets)");
 				var currentSpendAmount = new Number(document.getElementById('lottery-spend-cake').value);
 				
-				if( amount + currentSpendAmount <= 3 ){
+				if( new Number(amount) + currentSpendAmount <= 3 ){
 					$("#lottery-invest-btn").prop('disabled', false);
 				}else{
 					$("#lottery-invest-btn").prop('disabled', true);
