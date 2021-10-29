@@ -227,13 +227,16 @@ function refreshData(){
 					
 					if( new Number(amount) + currentSpendAmount <= 3 ){
 						$("#lottery-invest-btn").prop('disabled', false);
+						$("#lottery_warning_msg").text("");
 					}else{
 						$("#lottery-invest-btn").prop('disabled', true);
+						$("#lottery_warning_msg").text("limit reached! 3 tickets max!");
 					}
 				});
 				
 			}else{
 				$("#lottery-invest-btn").prop('disabled', true);
+				$("#lottery_warning_msg").text("please approve");
 			}
 		});
 		

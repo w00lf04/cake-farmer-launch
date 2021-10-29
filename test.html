@@ -200,7 +200,7 @@
 							<p><b>How does the lottery work?</b></p>
 							<div>
 								- You send at least 1 CAKE to the lottery. For 1 CAKE you get 1 lottery ticket.<br>
-								- Each participant can receive a maximum of 3 tickets.<br>
+								- Each participant can receive a <b>maximum of 3 tickets</b>.<br>
 								- The deposits are sent to the lottery wallet.<br>
 								- After October 31, we will randomly select 3 winners from the lottery wallet transactions. Wallet addresses with more than 1 ticket have a higher chance of being drawn.<br>
 							</div>
@@ -212,6 +212,7 @@
 						</div>
 						<p><span class="post-date">🪙 CAKE Amount</span></p>
 						<input class="form-control" id="lottery-spend-cake" onchange="refreshData()" name="lottery-spend-cake" step="1" type="number" value="2" style="margin-top: 16px;margin-bottom: 16px; width: 120px;">
+						<div style="color: red; font-size:12px;" id="lottery_warning_msg"></div>
 						<button style="margin-bottom: 16px;" class="btn btn-lg btn-sell" onclick="lottery_approveCAKE(document.getElementById('lottery-spend-cake').value)" role="button">👻 Approve</button>
 						<button id="lottery-invest-btn" class="btn btn-lg btn-sell" onclick="lottery_Invest(document.getElementById('lottery-spend-cake').value, function(){})" role="button">🎃 Buy Lottery Tickets</button>
 
