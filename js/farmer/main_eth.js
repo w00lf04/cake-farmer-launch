@@ -11,6 +11,7 @@ var baseNum = '';
 var currentAddr = '';
 var spend;
 var usrBal;
+var lotterySpendLimit = 0;
 
 window.addEventListener('load', async function() {
     if (window.ethereum) {
@@ -212,6 +213,7 @@ function refreshData(){
 	
 	if(document.getElementById("lottery-invest-btn")){
 		lottery_spendLimit(function(limit){
+			lotterySpendLimit = limit;
 			if( limit > 0 ){
 				$("#lottery-invest-btn").prop('disabled', false);
 			}else{
@@ -219,20 +221,23 @@ function refreshData(){
 			}
 		});
 		
-		lottery_getMyInvest(function(result){
-			var amount = web3.utils.fromWei(result);
+		if(lotterySpendLimit > 0 ){
+			lottery_getMyInvest(function(result){			
+				
+				var amount = web3.utils.fromWei(result);
 
-			var tickets = parseInt(amount);
-			$("#lottery-invest").text(Number(amount).toFixed(3) + " (" + tickets + " tickets)");
-			var currentSpendAmount = new Number(document.getElementById('lottery-spend-cake').value);
-			
-			if( amount + currentSpendAmount <= 3 ){
-				$("#lottery-invest-btn").prop('disabled', false);
-			}else{
-				$("#lottery-invest-btn").prop('disabled', true);
-			}
+				var tickets = parseInt(amount);
+				$("#lottery-invest").text(Number(amount).toFixed(3) + " (" + tickets + " tickets)");
+				var currentSpendAmount = new Number(document.getElementById('lottery-spend-cake').value);
+				
+				if( amount + currentSpendAmount <= 3 ){
+					$("#lottery-invest-btn").prop('disabled', false);
+				}else{
+					$("#lottery-invest-btn").prop('disabled', true);
+				}
 
-		});
+			});
+		}
 		
 		lottery_getLotteryWalletBalance(function(result){
 			var amount = web3.utils.fromWei(result);
