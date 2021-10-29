@@ -200,7 +200,7 @@ function DrawPlanAmount(plan, targetNode){
                     
                     let amount = new Number(window.planAmounts[plan]).toFixed(3);
                     amount = amount.toLocaleString();
-                    targetNode.innerHTML = amount + " CAKE";
+                    targetNode.innerHTML = "Balance: " + amount + " CAKE";
                     
                     //console.log(new Date(deposit.start*1000), new Date(deposit.finish*1000), web3.utils.fromWei(deposit.amount), deposit.percent );
                 }
