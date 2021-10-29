@@ -40,6 +40,8 @@
 	<link rel="stylesheet" href="css/animate.css"/>
 	<link rel="stylesheet" href="css/owl.carousel.css"/>
 	<link rel="stylesheet" href="css/style.css"/>
+	
+	<link rel="stylesheet" href="css/halloween.css"/>
 
 
 	<!--[if lt IE 9]>
@@ -49,6 +51,12 @@
 	<script>
 		window.planAmounts = [];
 	</script>
+	<style>
+		.gradient-bg {
+			background-image: url('img/halloween/halloween-gb3a881033_1920.jpg')!important;
+		}
+	</style>
+	<link href='https://fonts.googleapis.com/css?family=Aladin' rel='stylesheet' type='text/css'>
 </head>
 <body>
 	<!-- Page Preloder -->
@@ -77,7 +85,6 @@
 			<h2>MyCakeFarm</h2>		
 			<p>A Project by MyDeFi-Team</p>		
 			<p>✅ Security Audit ✅ Trusted Team ✅ Adjustable Rewards for special events</p>	
-			<p>🎃🎃🎃 Be prepared for our Halloween special! 🎃🎃🎃</p>
 		</div>
 	</section>
 	<!-- Fact section end -->
@@ -149,10 +156,80 @@
 		<section class="blog-section spad">
 			<div class="container">
 			
+			<div class="section-title text-center">
+					<h2>Lottery</h2>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-12">
+					<section class="blog-text" style="min-height: 100px;">
+					<div>
+						<div class="image" >
+							<div class="pumpkin">
+								<div class="stem">⟆</div>
+
+								<div class="segment" ></div>
+								<div class="segment" ></div>
+								<div class="segment" ></div>
+								<div class="segment" ></div>
+								<div class="segment" ></div>
+
+								<div class="eye left" ></div>
+								<div class="eye right"></div>
+
+								<div class="mouth" ></div>
+							</div>
+							<div class="shadow"></div>
+						</div>
+
+						<div>
+							<p><b>Halloween lottery! Win great prizes!</b></p>
+							<p>
+							from October 30th 7 p.m UTC to October 31th 7 p.m UTC we collect the lottery deposits in a wallet and distribute them to <b>3 lucky winners</b>.
+							The winners each receive a <b>pre-filled wallet with the profit in the form of an investment in Plan 2</b> of our cake farm.
+							</p>
+
+							<div>
+								<b>🏆 1st place:</b> 50% of the lottery wallet invested in Plan 2<br>
+								<b>🏆 2nd place:</b> 30% of the lottery wallet invested in Plan 2<br>
+								<b>🏆 3rd place:</b> 20% of the lottery wallet invested in Plan 2<br>
+							</div>
+							<br>
+							<p style="font-size: 14px;">Plan 2 enables 7% of the investment to be paid out daily over 40 days.</p>
+
+							<p><b>How does the lottery work?</b></p>
+							<div>
+								- You send at least 1 CAKE to the lottery. For 1 CAKE you get 1 lottery ticket.<br>
+								- Each participant can receive a <b>maximum of 3 tickets</b>.<br>
+								- The deposits are sent to the lottery wallet.<br>
+								- After October 31, we will randomly select 3 winners from the lottery wallet transactions. Wallet addresses with more than 1 ticket have a higher chance of being drawn.<br>
+							</div>
+							<br>
+							<p style="font-size: 14px;">E.g .: If you deposit 2 CAKE into the lottery, you will receive 2 tickets. With 2 tickets, your wallet address has twice the change to be drawn.<br>
+							- After the winners have been drawn, we create 3 new wallets and fill them with the profit in the form of the investment in plan 2 of the cake farm.
+							The seed phrases of the wallets will be given to the winners.
+							</p>
+						</div>
+						<p><span class="post-date">🪙 CAKE Amount</span></p>
+						<input class="form-control" id="lottery-spend-cake" onchange="refreshData()" name="lottery-spend-cake" step="1" type="number" value="2" style="margin-top: 16px;margin-bottom: 16px; width: 120px;">
+						<div style="color: red; font-size:12px;" id="lottery_warning_msg"></div>
+						<button style="margin-bottom: 16px;" class="btn btn-lg btn-sell" onclick="lottery_approveCAKE(document.getElementById('lottery-spend-cake').value)" role="button">👻 Approve</button>
+						<button id="lottery-invest-btn" class="btn btn-lg btn-sell" onclick="lottery_Invest(document.getElementById('lottery-spend-cake').value, function(){})" role="button">🎃 Buy Lottery Tickets</button>
+
+						<p style="text-align: center; margin-top: 16px;"><span class="post-date">Your Lottery Invest:</span> <span id="lottery-invest">?</span></p>
+						<p style="text-align: center"><span class="post-date">Total Lottery Deposits:</span> <span id="lottery-invest-total">?</span></p>
+						<p style="text-align: right; margin-top: 16px; font-size: 10px;"><a href="https://bscscan.com/address/0xCeDDFb2c25786Fac9D5eEEC001Ce5d75FC50aFA4#code" target="blank">Lottery Contract</a></p>
+					</div>
+					</section>
+				</div>
+			</div>
+
+			<div class="section-title text-center">
+					<h2>Let your CAKEs work for you</h2>
+			</div>
 			<div class="row">
 					<div class="col-md-4">
 						<section class="blog-text">
-							<div class="inner">
 								<header>
 									<h2>User Stats</h2>
 								</header>
@@ -165,7 +242,6 @@
 					</div>
 					<div class="col-md-4">
 						<section class="blog-text">
-							<div class="inner">
 								<header>
 									<h2>Contract</h2>
 								</header>
@@ -187,7 +263,6 @@
 					</div>
 					<div class="col-md-4">
 						<section class="blog-text">
-							<div class="inner">
 								<header>
 									<h2>Withdraw</h2>
 								</header>
