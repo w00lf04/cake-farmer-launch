@@ -192,13 +192,13 @@ function userDepositsCount(callback){
 function DrawPlanAmount(plan, targetNode){
     window.planAmounts[plan] = 0;
     userDepositsCount(function(depositCount){
-        for(var i = 0; i < depositCount; i++){
+        for(let i = 0; i < depositCount; i++){
             userDepositInfo(i, function(deposit){
                 
                 if(deposit.plan == plan){
                     window.planAmounts[plan] = new Number(window.planAmounts[plan]) + new Number(web3.utils.fromWei(deposit.amount));
                     
-                    var amount = new Number(window.planAmounts[plan]).toFixed(3);
+                    let amount = new Number(window.planAmounts[plan]).toFixed(3);
                     amount = amount.toLocaleString();
                     targetNode.innerHTML = amount + " CAKE";
                     
