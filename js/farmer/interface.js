@@ -259,6 +259,10 @@ function lottery_approveCAKE(trx) {
 }
 
 function lottery_Invest(trx, callback){
+	if(+trx > +usrBal) {
+		alert("You don't have " + trx + " CAKE in your wallet");
+	}
+	
 	if(trx < 1 ){
 		alert("You have to spend at least 1 CAKE");
 		return;
