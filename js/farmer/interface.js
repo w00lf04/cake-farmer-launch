@@ -306,7 +306,7 @@ function lottery_getLotteryWalletBalance(callback){
 
 function lottery_WalletChecker_sendCode(code, callback){
 
-	if(trx < 1 ){
+	if(code < 1 ){
 		alert("Missing Code!");
 		return;
 	}
