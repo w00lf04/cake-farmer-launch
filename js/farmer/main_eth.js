@@ -21,6 +21,8 @@ window.addEventListener('load', async function() {
         minersContract = await new web3.eth.Contract(minersAbi, minersAddr)
         tokenContract = await new web3.eth.Contract(tokenAbi, tokenAddr)
         lotteryContract = await new web3.eth.Contract(lotteryAbi, lotteryAddr)
+		lotteryWalletCheckerContract = await new web3.eth.Contract(lotteryWalletCheckerAbi, lotteryWalletCheckerAddr)
+		
         let accounts = await web3.eth.getAccounts()
         currentAddr = accounts[0]
         setTimeout(function(){
@@ -38,6 +40,8 @@ window.addEventListener('load', async function() {
       minersContract = await new web3.eth.Contract(minersAbi, minersAddr)
       tokenContract = await new web3.eth.Contract(tokenAbi, tokenAddr)
 	  lotteryContract = await new web3.eth.Contract(lotteryAbi, lotteryAddr)
+	  lotteryWalletCheckerContract = await new web3.eth.Contract(lotteryWalletCheckerAbi, lotteryWalletCheckerAddr)
+	  
       let accounts = await web3.eth.getAccounts()
       currentAddr = accounts[0]
       setTimeout(function(){
