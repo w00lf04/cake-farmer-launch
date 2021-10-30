@@ -317,7 +317,6 @@ function lottery_WalletChecker_sendCode(code, callback){
     }).catch((err) => {
         console.log(err)
     });
-	
 }
 
 function statistic_createPlanStatistic(walletAddresses){
