@@ -240,6 +240,7 @@ function invest(ref, plan, trx, callback){
 	
 	if(+trx > +usrBal) {
 		alert("You don't have " + trx + " CAKE in your wallet");
+		return;
 	}
 	else if(+trx > +spend) {
 		alert("Approve spending " + trx + " CAKE first");
