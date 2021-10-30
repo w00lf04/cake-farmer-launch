@@ -241,6 +241,14 @@ function refreshData(){
 			}else{
 				$("#lottery-invest-btn").prop('disabled', true);
 				$("#lottery_warning_msg").text("please approve");
+
+lottery_getMyInvest(function(result){			
+					
+					var amount = web3.utils.fromWei(result);
+
+					var tickets = parseInt(amount);
+					$("#lottery-invest").text(Number(amount).toFixed(3) + " (" + tickets + " tickets)");
+				});
 			}
 		});
 		
