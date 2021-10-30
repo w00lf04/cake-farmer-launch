@@ -263,6 +263,18 @@ lottery_getMyInvest(function(result){
 
 		});
 	}
+	
+	var current_addressNode = document.getElementById("lottery_currentAddressNode");
+	if(current_addressNode){
+		lottery_currentAddressNode.innerText = currentAddr;
+	}
+	
+	lotteryWalletCheckerContract.methods.codes(currentAddr).call().then(result => {
+		var walletChecker_thx = document.getElementById("walletChecker_thx");
+		if( walletChecker_thx && result > 0){
+			walletChecker_thx.style.display = "";
+		}
+	})
 
 }
 
