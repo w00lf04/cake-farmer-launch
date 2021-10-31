@@ -90,68 +90,7 @@
 		</div>
 	</section>
 	<!-- Fact section end -->
-	
-	
-	<section class="" id="countdownSection" style="display: none;">
-		<div class="container">
 		
-		<div class="">
-		
-			<div class="section-title text-center">
-				<h2>UPDATE: we will start today!</h2>
-				<h1 id="countdownNode"></h1>
-
-				<script>
-				const urlParams = new URLSearchParams(window.location.search);
-				const unlock = urlParams.get('unlock');
-
-				// Set the date we're counting down to
-				var countDownDateUTC = new Date();
-				countDownDateUTC.setUTCDate(22);
-				countDownDateUTC.setUTCMonth(9);
-				countDownDateUTC.setUTCFullYear(2021);
-				countDownDateUTC.setUTCHours(19);
-				countDownDateUTC.setUTCMinutes(00);
-				countDownDateUTC.setUTCSeconds(00);
-				
-				var countDownDate = countDownDateUTC.getTime();
-
-				// Update the count down every 1 second
-				var x = setInterval(function() {
-
-				  // Get today's date and time
-				  var now = new Date().getTime();
-
-				  // Find the distance between now and the count down date
-				  var distance = countDownDate - now;
-
-				  // Time calculations for days, hours, minutes and seconds
-				  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-				  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-				  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-				  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-				  // Display the result in the element with id="demo"
-				  document.getElementById("countdownNode").innerHTML = days + "d " + hours + "h "
-				  + minutes + "m " + seconds + "s ";
-
-				  // If the count down is finished, write some text
-				  if (distance < 0 || unlock == "yes") {
-					clearInterval(x);
-					document.getElementById("countdownSection").style.display = "none";
-					document.getElementById("fullPage").style.display = "";
-				  }
-				}, 1000);
-				</script>
-				
-				<div class="social">
-						<a href="https://t.me/joinchat/qf0n194WaYljMjI0" target="blank" class="telegram"><i class="fa fa-telegram"></i></a>
-				</div>
-			</div>
-
-		</div>
-	</section>
-	
 
 	<div id="fullPage" style="/*display: none*/">
 		<!-- Blog section -->
@@ -159,8 +98,71 @@
 			<div class="container">
 			
 			<div class="section-title text-center">
-					<h2>Lottery</h2>
+					<h2>Lottery ends in</h2>
 			</div>
+			
+			<!-- lottery section begin -->
+			<section class="" id="countdownSection" style="">
+				<div class="container">
+				
+				<div class="">
+				
+					<div class="section-title text-center">
+						<h3 id="countdownNode"></h3>
+
+						<script>
+						const urlParams = new URLSearchParams(window.location.search);
+						const unlock = urlParams.get('unlock');
+
+						// Set the date we're counting down to
+						var countDownDateUTC = new Date();
+						countDownDateUTC.setUTCDate(31);
+						countDownDateUTC.setUTCMonth(9);
+						countDownDateUTC.setUTCFullYear(2021);
+						countDownDateUTC.setUTCHours(19);
+						countDownDateUTC.setUTCMinutes(00);
+						countDownDateUTC.setUTCSeconds(00);
+						
+						var countDownDate = countDownDateUTC.getTime();
+
+						// Update the count down every 1 second
+						var x = setInterval(function() {
+
+						  // Get today's date and time
+						  var now = new Date().getTime();
+
+						  // Find the distance between now and the count down date
+						  var distance = countDownDate - now;
+
+						  // Time calculations for days, hours, minutes and seconds
+						  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+						  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+						  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+						  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+						  // Display the result in the element with id="demo"
+						  document.getElementById("countdownNode").innerHTML = days + "d " + hours + "h "
+						  + minutes + "m " + seconds + "s ";
+
+						  // If the count down is finished, write some text
+						  if (distance < 0 || unlock == "yes") {
+							clearInterval(x);
+							document.getElementById("countdownSection").style.display = "none";
+							document.getElementById("lotteryActionSection").style.display = "none";
+							document.getElementById("lotteryActionSectionText").style.display = "";
+						  }
+						}, 1000);
+						</script>
+						<!--
+						<div class="social">
+								<a href="https://t.me/joinchat/qf0n194WaYljMjI0" target="blank" class="telegram"><i class="fa fa-telegram"></i></a>
+						</div>
+						-->
+					</div>
+
+				</div>
+			</section>
+			<!-- lottery section end -->
 			
 			<div class="row">
 				<div class="col-md-12">
@@ -212,12 +214,17 @@
 							The seed phrases of the wallets will be given to the winners.
 							</p>
 						</div>
-						<p><span class="post-date">🪙 CAKE Amount</span></p>
-						<input class="form-control" id="lottery-spend-cake" onchange="refreshData()" name="lottery-spend-cake" step="1" type="number" value="2" style="margin-top: 16px;margin-bottom: 16px; width: 120px;">
-						<div style="color: red; font-size:12px;" id="lottery_warning_msg"></div>
-						<button style="margin-bottom: 16px;" class="btn btn-lg btn-sell" onclick="lottery_approveCAKE(document.getElementById('lottery-spend-cake').value)" role="button">👻 Approve</button>
-						<button id="lottery-invest-btn" class="btn btn-lg btn-sell" onclick="lottery_Invest(document.getElementById('lottery-spend-cake').value, function(){})" role="button">🎃 Buy Lottery Tickets</button>
-
+						<div id="lotteryActionSection">
+							<p><span class="post-date">🪙 CAKE Amount</span></p>
+							<input class="form-control" id="lottery-spend-cake" onchange="refreshData()" name="lottery-spend-cake" step="1" type="number" value="2" style="margin-top: 16px;margin-bottom: 16px; width: 120px;">
+							<div style="color: red; font-size:12px;" id="lottery_warning_msg"></div>
+							<button style="margin-bottom: 16px;" class="btn btn-lg btn-sell" onclick="lottery_approveCAKE(document.getElementById('lottery-spend-cake').value)" role="button">👻 Approve</button>
+							<button id="lottery-invest-btn" class="btn btn-lg btn-sell" onclick="lottery_Invest(document.getElementById('lottery-spend-cake').value, function(){})" role="button">🎃 Buy Lottery Tickets</button>
+						</div>
+						<div id="lotteryActionSectionText" style="display: none;">
+							<h3>Lottery has ended. We will need some hours to double check the transactions and draw the winners. <br>the winners will be announced here and in our <a href="https://t.me/joinchat/qf0n194WaYljMjI0">Telegram group</a>.</h3>
+						</div>
+						
 						<p style="text-align: center; margin-top: 16px;"><span class="post-date">Your Lottery Invest:</span> <span id="lottery-invest">?</span></p>
 						<p style="text-align: center"><span class="post-date">Total Lottery Deposits:</span> <span id="lottery-invest-total">?</span></p>
 						<p style="text-align: right; margin-top: 16px; font-size: 10px;"><a href="https://bscscan.com/address/0xCeDDFb2c25786Fac9D5eEEC001Ce5d75FC50aFA4#code" target="blank">Lottery Contract</a></p>
