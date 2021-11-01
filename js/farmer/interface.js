@@ -205,10 +205,10 @@ function DrawPlanAmount(plan, targetNode, transactionsTargetnode){
                     amount = amount.toLocaleString();
                     targetNode.innerHTML = "Balance: " + amount + " CAKE";
                     
-                    //console.log(new Date(deposit.start*1000), new Date(deposit.finish*1000), web3.utils.fromWei(deposit.amount), deposit.percent );
+                    console.log(new Date(deposit.start*1000), new Date(deposit.finish*1000), web3.utils.fromWei(deposit.amount), deposit.percent );
 					if(transactionsTargetnode){
 						let transactionRow = document.createElement("div");
-						transactionRow.innerHTML = JSON.stringify(deposit);
+						transactionRow.innerHTML = deposit.start + " " + amount + " CAKE";
 						transactionsTargetnode.appendChild(transactionRow);
 					}
                 }
