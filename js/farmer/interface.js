@@ -192,9 +192,7 @@ function userDepositsCount(callback){
 function DrawPlanAmount(plan, targetNode, transactionsTargetnode){
     window.planAmounts[plan] = 0;
 	window.planTransactions[plan] = "";
-	if(transactionsTargetnode){
-		transactionsTargetnode.innerHTML = "";
-	}
+
 	
     userDepositsCount(function(depositCount){
         for(let i = 0; i < depositCount; i++){
@@ -205,16 +203,17 @@ function DrawPlanAmount(plan, targetNode, transactionsTargetnode){
 					amount = amount.toLocaleString();
 						
                     window.planAmounts[plan] = new Number(window.planAmounts[plan]) + new Number(web3.utils.fromWei(deposit.amount));
-                    window.planTransactions[plan] = window.planTransactions[plan] + new Date(deposit.start*1000).toLocaleString() + "<br>" + amount + " CAKE";
+                    window.planTransactions[plan] = window.planTransactions[plan] + "<b>" + new Date(deposit.start*1000).toLocaleString() + "</b><br>" + amount + " CAKE<hr>";
 					
 					if( i+1 == depositCount){
 						targetNode.innerHTML = "Balance: " + amount + " CAKE";
 						
 						
 						if(transactionsTargetnode){
+							transactionsTargetnode.innerHTML = "";
+	
 							let transactionRow = document.createElement("div");
 							transactionRow.innerHTML = window.planTransactions[plan];
-							transactionRow.style.borderBottom = "1px solid gray";
 							transactionsTargetnode.appendChild(transactionRow);
 						}
 					}
