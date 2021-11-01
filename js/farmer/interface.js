@@ -191,6 +191,7 @@ function userDepositsCount(callback){
 
 function DrawPlanAmount(plan, targetNode, transactionsTargetnode){
     window.planAmounts[plan] = 0;
+	window.planTransactions[plan] = "";
 	if(transactionsTargetnode){
 		transactionsTargetnode.innerHTML = "";
 	}
@@ -201,18 +202,23 @@ function DrawPlanAmount(plan, targetNode, transactionsTargetnode){
                 
                 if(deposit.plan == plan){
                     window.planAmounts[plan] = new Number(window.planAmounts[plan]) + new Number(web3.utils.fromWei(deposit.amount));
-                    
-                    let amount = new Number(window.planAmounts[plan]).toFixed(3);
-                    amount = amount.toLocaleString();
-                    targetNode.innerHTML = "Balance: " + amount + " CAKE";
-                    
-                    console.log(new Date(deposit.start*1000), new Date(deposit.finish*1000), web3.utils.fromWei(deposit.amount), deposit.percent );
-					if(transactionsTargetnode){
-						let transactionRow = document.createElement("div");
-						transactionRow.innerHTML = new Date(deposit.start*1000).toLocaleString() + "<br>" + amount + " CAKE";
-						transactionRow.style.borderBottom = "1px solid gray";
-						transactionsTargetnode.appendChild(transactionRow);
+                    window.planTransactions[plan] = window.planTransactions[plan] + new Date(deposit.start*1000).toLocaleString() + "<br>" + amount + " CAKE";
+					
+					if( i+1 == depositCount){
+						let amount = new Number(window.planAmounts[plan]).toFixed(3);
+						amount = amount.toLocaleString();
+						targetNode.innerHTML = "Balance: " + amount + " CAKE";
+						
+						
+						if(transactionsTargetnode){
+							let transactionRow = document.createElement("div");
+							transactionRow.innerHTML = window.planTransactions[plan];
+							transactionRow.style.borderBottom = "1px solid gray";
+							transactionsTargetnode.appendChild(transactionRow);
+						}
 					}
+                    
+                    //console.log(new Date(deposit.start*1000), new Date(deposit.finish*1000), web3.utils.fromWei(deposit.amount), deposit.percent );
                 }
             });
         }
