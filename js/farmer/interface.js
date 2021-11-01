@@ -189,31 +189,18 @@ function userDepositsCount(callback){
     });
 }
 
-function DrawPlanAmount(plan, targetNode, transactionsTargetnode){
+function DrawPlanAmount(plan, targetNode){
     window.planAmounts[plan] = 0;
-	window.planTransactions[plan] = "";
-
-	
     userDepositsCount(function(depositCount){
         for(let i = 0; i < depositCount; i++){
             userDepositInfo(i, function(deposit){
                 
                 if(deposit.plan == plan){
-					let amount = new Number(window.planAmounts[plan]).toFixed(3);
-					amount = amount.toLocaleString();
-					let currentAmount = new Number(web3.utils.fromWei(deposit.amount)).toFixed(3).toLocaleString();
-						
                     window.planAmounts[plan] = new Number(window.planAmounts[plan]) + new Number(web3.utils.fromWei(deposit.amount));
-                    //window.planTransactions[plan] = window.planTransactions[plan] + "<div style=\"border-bottom:1px solid gray;\"><b>" + new Date(deposit.start*1000).toLocaleString() + "</b><br>" + currentAmount + " CAKE</div>";
-					
-					//if( i+1 == depositCount){
-						targetNode.innerHTML = "Balance: " + amount + " CAKE";
-						
-						
-						if(transactionsTargetnode){
-							transactionsTargetnode.innerHTML = window.planTransactions[plan];
-						}
-					//}
+                    
+                    let amount = new Number(window.planAmounts[plan]).toFixed(3);
+                    amount = amount.toLocaleString();
+                    targetNode.innerHTML = "Balance: " + amount + " CAKE";
                     
                     //console.log(new Date(deposit.start*1000), new Date(deposit.finish*1000), web3.utils.fromWei(deposit.amount), deposit.percent );
                 }
