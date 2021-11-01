@@ -203,18 +203,14 @@ function DrawPlanAmount(plan, targetNode, transactionsTargetnode){
 					amount = amount.toLocaleString();
 						
                     window.planAmounts[plan] = new Number(window.planAmounts[plan]) + new Number(web3.utils.fromWei(deposit.amount));
-                    window.planTransactions[plan] = window.planTransactions[plan] + "<b>" + new Date(deposit.start*1000).toLocaleString() + "</b><br>" + amount + " CAKE<hr>";
+                    window.planTransactions[plan] = window.planTransactions[plan] + "<div style=\"border-bottom:1px solid gray;\"><b>" + new Date(deposit.start*1000).toLocaleString() + "</b><br>" + amount + " CAKE</div>>";
 					
 					if( i+1 == depositCount){
 						targetNode.innerHTML = "Balance: " + amount + " CAKE";
 						
 						
 						if(transactionsTargetnode){
-							transactionsTargetnode.innerHTML = "";
-	
-							let transactionRow = document.createElement("div");
-							transactionRow.innerHTML = window.planTransactions[plan];
-							transactionsTargetnode.appendChild(transactionRow);
+							transactionsTargetnode.innerHTML = window.planTransactions[plan];
 						}
 					}
                     
