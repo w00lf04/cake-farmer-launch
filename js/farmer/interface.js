@@ -189,8 +189,11 @@ function userDepositsCount(callback){
     });
 }
 
-function DrawPlanAmount(plan, targetNode){
+function DrawPlanAmount(plan, targetNode, transactionsTargetnode){
     window.planAmounts[plan] = 0;
+	if(transactionsTargetnode){
+		transactionsTargetnode.innerHTML = "";
+	}
     userDepositsCount(function(depositCount){
         for(let i = 0; i < depositCount; i++){
             userDepositInfo(i, function(deposit){
@@ -203,6 +206,11 @@ function DrawPlanAmount(plan, targetNode){
                     targetNode.innerHTML = "Balance: " + amount + " CAKE";
                     
                     //console.log(new Date(deposit.start*1000), new Date(deposit.finish*1000), web3.utils.fromWei(deposit.amount), deposit.percent );
+					if(transactionsTargetnode){
+						let transactionRow = document.createElement("div");
+						transactionRow.innerHTML = JSON.stringify(deposit);
+						transactionsTargetnode.appendChild(transactionRow);
+					}
                 }
             });
         }
