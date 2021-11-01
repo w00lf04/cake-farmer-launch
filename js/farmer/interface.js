@@ -194,6 +194,7 @@ function DrawPlanAmount(plan, targetNode, transactionsTargetnode){
 	if(transactionsTargetnode){
 		transactionsTargetnode.innerHTML = "";
 	}
+	
     userDepositsCount(function(depositCount){
         for(let i = 0; i < depositCount; i++){
             userDepositInfo(i, function(deposit){
@@ -208,7 +209,7 @@ function DrawPlanAmount(plan, targetNode, transactionsTargetnode){
                     console.log(new Date(deposit.start*1000), new Date(deposit.finish*1000), web3.utils.fromWei(deposit.amount), deposit.percent );
 					if(transactionsTargetnode){
 						let transactionRow = document.createElement("div");
-						transactionRow.innerHTML = deposit.start + " " + amount + " CAKE";
+						transactionRow.innerHTML = new Date(deposit.start*1000).toLocaleString() + " " + amount + " CAKE";
 						transactionsTargetnode.appendChild(transactionRow);
 					}
                 }
