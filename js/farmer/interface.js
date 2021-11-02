@@ -189,28 +189,75 @@ function userDepositsCount(callback){
     });
 }
 
-function DrawPlanAmount(plan, targetNode){
-    window.planAmounts[plan] = 0;
+const promisify = (inner) =>
+	new Promise((resolve, reject) =>
+		inner((res, err) => {
+			if (err) {
+				reject(err)
+			} else {
+				resolve(res);
+			}
+		})
+);
+	
+function DrawPlanAmount(plan, targetNode, transactionsTargetnode){
+
     userDepositsCount(function(depositCount){
-        for(let i = 0; i < depositCount; i++){
-            userDepositInfo(i, function(deposit){
-                
-                if(deposit.plan == plan){
-                    window.planAmounts[plan] = new Number(window.planAmounts[plan]) + new Number(web3.utils.fromWei(deposit.amount));
-                    
-                    let amount = new Number(window.planAmounts[plan]).toFixed(3);
-                    amount = amount.toLocaleString();
-                    targetNode.innerHTML = "Balance: " + amount + " CAKE";
-                    
-                    //console.log(new Date(deposit.start*1000), new Date(deposit.finish*1000), web3.utils.fromWei(deposit.amount), deposit.percent );
-                }
-            });
+		
+		let promises = [];		
+        for(let i = 0; i < depositCount; i++){			
+			promises.push(promisify(callback => minersContract.methods.getUserDepositInfo(currentAddr, i).call().then(callback)));			
         }
+		
+		Promise.all(promises).then(function (results) {
+			//console.log("Promise.all results: ", results, arguments)
+			
+			let planAmountTotal = 0;
+			let transactionsTxt = "<div class=\"post-date\">History</div>";
+			
+			for(let x  = 0; x < results.length; x++){
+				/*
+					amount: "1000000000000000000"​​
+					finish: "2498928189"				​​
+					percent: "50"				​​
+					plan: "0"				​​
+					start: "1634928189"
+				*/
+				let deposit = results[x];
+				
+				if(deposit.plan == plan){
+					let currentAmount = new Number(web3.utils.fromWei(deposit.amount));				
+					let start = new Date(deposit.start*1000);
+					let finish = new Date(deposit.finish*1000);	
+					let finishDays = ((finish.getTime() - (new Date()).getTime()) / 1000 / 60 / 60 / 24).toFixed(1);
+					
+					let color = "color: black";
+					if( finishDays < 0 ){
+						finishDays = 0;
+						color = "color: gray";
+					}
+					
+					if( finishDays > 0 ){
+						planAmountTotal += currentAmount;
+					}
+					
+					if( plan > 0){ // plan with and without end. 0 = forever
+						transactionsTxt = transactionsTxt + "<div style=\"border-bottom:1px solid gray; margin-bottom: 4px; "+ color +"\"><b>" + start.toLocaleString() + "</b><br>Amount: " + currentAmount + " CAKE<br>" + finishDays + " days left</div>";
+					}else{
+						transactionsTxt = transactionsTxt + "<div style=\"border-bottom:1px solid gray; margin-bottom: 4px; "+ color +"\"><b>" + start.toLocaleString() + "</b><br>Amount: " + currentAmount + " CAKE</div>";
+					}
+				}
+			}
+			
+			targetNode.innerHTML = "Balance: " + planAmountTotal + " CAKE";			
+			
+			if(transactionsTargetnode && planAmountTotal > 0){
+				transactionsTargetnode.innerHTML = transactionsTxt;
+			}
+		});
+		
     })
 }
-//DrawDeposits(0);
-
-
 
 
 
