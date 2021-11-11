@@ -141,8 +141,9 @@
 				  // If the count down is finished, write some text
 				  if (distance < 0 || unlock == "yes") {
 					clearInterval(x);
-					//document.getElementById("countdownSection").style.display = "none";
-					//document.getElementById("fullPage").style.display = "";
+					document.getElementById("countdownSection").style.display = "none";
+					document.getElementById("lotteryActionSectionText_finish").style.display = "";
+					document.getElementById("lotteryActionSectionText").style.display = "none";
 				  }
 				}, 1000);
 				</script>
@@ -168,7 +169,7 @@
 				<div class="col-md-12">
 					<section class="blog-text" style="min-height: 100px;">
 					<div>
-						<div>
+						<div id="lotteryActionSectionText">
 							<p><b>🚀Airdrop contest🚀</b></p>
 
 
@@ -186,6 +187,9 @@ Good luck🍀<br><br>
 							</div>
 							<br>
 
+						</div>
+						<div id="lotteryActionSectionText_finish" style="display: none;">
+							<h3>Airdrop contest has ended. We will need some time to double check the transactions and draw the winners. <br>the winners will be announced here and in our <a href="https://t.me/joinchat/qf0n194WaYljMjI0">Telegram group</a>.</h3>
 						</div>
 					</div>
 					</section>
